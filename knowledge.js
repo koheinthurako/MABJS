@@ -148,6 +148,7 @@
 // Async ... Await
 // async keyword ကိုသုံးလိုက်တာနဲ့ await keyword ကိုသုံးလို့ရပြီ
 // Asynchronous Language ပေါ်မှာ code တွေကို synchronous အလုပ်လုပ်ချင်တယ်ဆိုရင် async...await နဲ့ ထိန်းလို့ရတယ်
+// လွယ်လွယ်ပြောရရင် asynchronous အလုပ်တွေကို await (စောင့်)ခိုင်းလိုက်ပြီး synchronous ဖြစ်သွားအောင်လုပ်ပေးခြင်း
 
 // function run() { 
 //     // promise ကတော့ async process ကို ပဲထိန်းချုပ်ပြီး resolve ဆို ဒါလုပ် catch ဆို ဒါလုပ်ဆိုပြီး control လုပ်တဲ့ object
@@ -204,5 +205,56 @@
 // }
 
 // asyncRun();
+
+
+
+// mini showOpenFilePicker
+// showOpenFilePicker ရဲ့ options တွေ အကြောင်းတွေကို ဆက်ဖတ်ပါ
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
+const btn = document.querySelector("button");
+//     // promise အတိုင်း အလုပ်လုပ်ခြင်း
+// const openUploader = () => {
+//     const openFile = showOpenFilePicker({
+//         types: [
+//             {
+//               description: "Images",
+//               accept: {
+//                 "image/*": [".png", ".gif", ".jpeg", ".jpg"],
+//               },
+//             },
+//           ],
+//           excludeAcceptAllOption: true,
+//           multiple: false
+//     });
+//     // console.log(openFile);
+//     const file = openFile.then(data => data[0].getFile());
+//     // console.log(file);
+//     file.then(data => console.log(data));
+//     file.catch(data => console.log("fail to catch"));
+// };
+
+// async...await အတိုင်း အလုပ်လုပ်ခြင်း
+const openUploader = async () => {
+    // promise ကို မြင်တာနဲ့ await ကောက်ထည့်လိုက်ရင် resolve ကို return ပြန်ပေးတယ်
+    // await သည် synchronous ဖြစ်သည့်အတွက် အောက်က code လိုင်းတွေကို တားလိုက်ပြီး သူအလုပ်ပြီးမှ ကျန်တာတွေအလုပ်လုပ်တယ်
+    // promise ကတော့ asynchronous ဖြစ်သည့်အတွက် သူအလုပ်မပြီးလည်း တခြား အလုပ်တွေကို အလုပ်လုပ်တယ်
+    const openFile = await showOpenFilePicker({
+        types: [
+            {
+              description: "Images",
+              accept: {
+                "image/*": [".png", ".gif", ".jpeg", ".jpg"],
+              },
+            },
+          ],
+          excludeAcceptAllOption: true,
+          multiple: false
+    });
+    // promise ကို မြင်တာနဲ့ await ကောက်ထည့်လိုက်ရင် resolve ကို return ပြန်ပေးတယ်
+    const file = await openFile[0].getFile();
+    console.log(file);
+};
+
+btn.addEventListener('click', openUploader);
 
 
