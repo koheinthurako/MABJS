@@ -1,0 +1,22 @@
+{
+  "name": "npmtest",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "startNpm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koheinthurako/MABJS.git"
+  },
+  "author": "thet zaw hein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koheinthurako/MABJS/issues"
+  },
+  "homepage": "https://github.com/koheinthurako/MABJS#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
+}
